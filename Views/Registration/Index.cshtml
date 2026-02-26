@@ -5,23 +5,35 @@
 }
 
 @{
-    if(ViewBag.SuccessMessage != null)
+    if (ViewBag.SuccessMessage != null)
     {
-        <div class="alert alert-primary" role="alert">
-            @ViewBag.SuccessMessage
-        </div>
+        // <div class="alert alert-primary" role="alert">
+        //     @ViewBag.SuccessMessage
+        // </div>
+        <script>
+            Swal.fire({
+                     title: "Success!",
+                     text: '@ViewBag.SuccessMessage',
+                     icon: "success"
+                 })
+        </script>
     }
+
     else if (ViewBag.ErrorMessage != null)
     {
         <div class="alert alert-danger" role="alert">
             @ViewBag.ErrorMessage
-        </div>
+            </div>
     }
+    
 }
 
 <html>
     <head>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <script src="~/sweetalert2/sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="~/sweetaler2.css/" />
     </head>
     <body class="container">
         @using (Html.BeginForm("Index", "Registration", FormMethod.Post))
