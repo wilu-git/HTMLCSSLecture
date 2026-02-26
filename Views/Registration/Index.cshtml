@@ -11,26 +11,44 @@
     <body class="container">
         @using (Html.BeginForm("Index", "Registration", FormMethod.Post))
         {
+            <div class="form-group">
             @Html.LabelFor(x => x.Email, new{@class = "form-label"})
             @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Email,null, new {@class = "text-danger"})
+            </div>
+
+            <div class="form-group">
             @Html.LabelFor(x => x.Username, new { @class = "form-label" })
             @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Username, "", new {@class = "text-danger"})
+            </div>
 
-
+            <div class="form-group">
             @Html.LabelFor(x => x.FirstName, new { @class = "form-label" })
             @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.FirstName, "", new{@class = "text-danger"})
+            </div>
 
+            <div class="form-group">
             @Html.LabelFor(x => x.LastName, new { @class = "form-label" })
             @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
+            </div>
 
+            <div class="form-group">
             @Html.LabelFor(x => x.Password, new { @class = "form-label" })
             @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
             @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+            </div>
 
+            <div class="form-group">
             @Html.LabelFor(x => x.ConfirmPassword, new { @class = "form-label" })
             @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "form-control" })
-            
+            @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+
+            <button class="btn btn-info" type="submit" style="margin-top:10px">Signup</button>
         }
-        <button class="btn btn-info" type="submit" style="margin-top:10px">Signup</button>
+        
     </body>
 </html>

@@ -16,7 +16,7 @@ namespace HTMLCSSLecture.Controllers
             {
                 // Process the registration data (e.g., save to database)
                 // For demonstration, we will just redirect to a success page
-                return Ok("Goods");
+                return Ok("The User Has Been Registered");
             }
             return View(model);
         }
