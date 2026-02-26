@@ -25,17 +25,26 @@ namespace HTMLCSSLecture.Controllers
             {
                 // Process the registration data (e.g., save to database)
                 // For demonstration, we will just redirect to a success page
-                var res = await _service.RegisterUser(model);
-                if (res)
+                //var res = await _service.RegisterUser(model);
+                //if (res)
+                //{
+                //    ViewBag.SuccessMessage = "'User registered successfully!'";
+                //}
+                //else
+                //{
+                //    ViewBag.ErrorMessage = "'Something went Wrong!'";
+                //}
+
+                try
                 {
-                    ViewBag.SuccessMessage = "'User registered successfully!'";
+                    await _service.RegisterUser(model);
+                    ViewBag.SuccessMessage = "User registered successfully!";
                 }
-                else
+                catch(Exception ex)
                 {
-                    ViewBag.ErrorMessage = "'Something went Wrong!'";
+                    ViewBag.ErrorMessage = ex.Message;
                 }
 
-                    return View();
             }
             return View(model);
         }

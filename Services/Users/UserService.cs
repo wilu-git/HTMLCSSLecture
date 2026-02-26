@@ -26,12 +26,12 @@ namespace HTMLCSSLecture.Services.Users
 
         }   
 
-        public async Task<bool> RegisterUser(RegistrationModel model)
+        public async Task RegisterUser(RegistrationModel model)
         {
             var userData = await _repo.GetUser(model.Username);
             if (userData != null)
             {
-                return false;
+                throw new Exception("Username already exists");
             }
 
             //TODO: Create Password Hasher and EMAIL Encrypter
@@ -51,7 +51,7 @@ namespace HTMLCSSLecture.Services.Users
             };
 
             await _repo.RegisterUser(user, userDetails);
-            return true;
+            
 
             
         }
