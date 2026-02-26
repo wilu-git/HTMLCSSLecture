@@ -4,6 +4,21 @@
     Layout = null;
 }
 
+@{
+    if(ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-primary" role="alert">
+            @ViewBag.SuccessMessage
+        </div>
+    }
+    else if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+}
+
 <html>
     <head>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />

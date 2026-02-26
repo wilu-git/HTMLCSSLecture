@@ -13,22 +13,23 @@ namespace HTMLCSSLecture.Controllers
             _logger = logger;
         }
 
-        public IActionResult UserDetails ()
-        {
-            var data = new UserDetailsModel
-            {
-                Userid = 1,
-                NameOfUser = "John Doe",
-                Email = "sample@email.com",
-                Addresses = new List<string>
-                {
-                    "123 Main St, Anytown, USA",
-                    "456 Elm St, Othertown, USA",
-                    "Address3"
-                }
-            };
-            return View(data);
-        }
+        //public IActionResult Index ()
+        //{
+        //    //var data = new UserDetailsModel
+        //    //{
+        //    //    Userid = 1,
+        //    //    NameOfUser = "John Doe",
+        //    //    Email = "sample@email.com",
+        //    //    Addresses = new List<string>
+        //    //    {
+        //    //        "123 Main St, Anytown, USA",
+        //    //        "456 Elm St, Othertown, USA",
+        //    //        "Address3"
+        //    //    }
+        //    //};
+        //    //return View(data);
+        //    return View("Test");
+        //}
 
         public IActionResult Privacy()
         {

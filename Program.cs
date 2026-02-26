@@ -1,3 +1,8 @@
+using HTMLCSSLecture.Models.Database;
+using HTMLCSSLecture.Repositories.Users;
+using HTMLCSSLecture.Services.Users;
+using Microsoft.EntityFrameworkCore;
+
 namespace HTMLCSSLecture
 {
     public class Program
@@ -8,6 +13,13 @@ namespace HTMLCSSLecture
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<RegistrationSystemContext> (options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("RegistrationSystem"));
+            });
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 
@@ -27,7 +39,7 @@ namespace HTMLCSSLecture
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=UserDetails}/{id?}")
+                pattern: "{controller=Registration}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
