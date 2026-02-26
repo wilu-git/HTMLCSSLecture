@@ -1,0 +1,36 @@
+﻿@model RegistrationModel
+
+@{
+    Layout = null;
+}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body class="container">
+        @using (Html.BeginForm("Index", "Registration", FormMethod.Post))
+        {
+            @Html.LabelFor(x => x.Email, new{@class = "form-label"})
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            @Html.LabelFor(x => x.Username, new { @class = "form-label" })
+            @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+
+
+            @Html.LabelFor(x => x.FirstName, new { @class = "form-label" })
+            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+
+            @Html.LabelFor(x => x.LastName, new { @class = "form-label" })
+            @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+
+            @Html.LabelFor(x => x.Password, new { @class = "form-label" })
+            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+
+            @Html.LabelFor(x => x.ConfirmPassword, new { @class = "form-label" })
+            @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "form-control" })
+            
+        }
+        <button class="btn btn-info" type="submit" style="margin-top:10px">Signup</button>
+    </body>
+</html>

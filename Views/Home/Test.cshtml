@@ -1,0 +1,45 @@
+﻿@model LoginModel
+
+@{
+    Layout = null;
+    var test = "Hello"; 
+
+}
+<html>
+    <head>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body class="container">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+        <div>
+            @Html.LabelFor(x => x.Username, new { @class = "form-label" })
+            @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+            @Html.LabelFor(x => x.Password, new { @class = "form-label" })
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+        </div>
+
+        <button class="btn btn-info" type="submit" style="margin-top:10px">Login</button>
+        }
+    @* @test @DateTime.Now
+        @{
+            @DateTime.Now
+            <div>
+                <li>
+                @{
+                    for (int x = 0; x < 10; x++)
+                    {
+                        <div>
+                             <li>
+                             @x 
+                             </li>
+                        </div>
+                    }
+                }
+                </li>
+            </div>
+        } *@
+       
+
+    </body>
+</html>

@@ -1,0 +1,26 @@
+﻿@model UserDetailsModel
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body class="container">
+    <h6>@Model.Userid</h6>
+    <h5>@Model.NameOfUser</h5>
+    <p>@Model.Email</p>
+    <ul>
+        @{
+            foreach(var addresses in Model.Addresses)
+            {
+                <li>
+                    @addresses
+                </li>
+            }
+        }
+    </ul>
+
+</body>
+</html>
