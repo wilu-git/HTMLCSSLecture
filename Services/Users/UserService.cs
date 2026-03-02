@@ -28,32 +28,39 @@ namespace HTMLCSSLecture.Services.Users
 
         public async Task RegisterUser(RegistrationModel model)
         {
+            try
+            {
+                //TODO: Create Password Hasher and EMAIL Encrypter
+                var user = new User
+                {
+                    Username = model.Username,
+                    Password = model.Password,
+                    DateCreated = DateTime.Now
+                };
+
+                var userDetails = new UserDetail
+                {
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    DateCreated = DateTime.Now
+                };
+
+                await _repo.RegisterUser(user, userDetails);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Unknown Error");
+                //TODO: Log the exception
+            }
+
             var userData = await _repo.GetUser(model.Username);
             if (userData != null)
             {
                 throw new Exception("Username already exists");
             }
 
-            //TODO: Create Password Hasher and EMAIL Encrypter
-            var user = new User
-            {
-                Username = model.Username,
-                Password = model.Password,
-                DateCreated = DateTime.Now
-            };
-
-            var userDetails = new UserDetail
-            {
-                Email = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                DateCreated = DateTime.Now
-            };
-
-            await _repo.RegisterUser(user, userDetails);
-            
-
-            
+                       
         }
     }
 }

@@ -6,7 +6,7 @@ namespace HTMLCSSLecture.Models
     public class RegistrationModel
     {
         [Required]
-        [RegularExpression(@"^[a-zA-Z0-9]{4,20}$", ErrorMessage = "Username must be 4-20 characters and ocntain only letters, numbers or underscore")]
+        [RegularExpression(@"^[a-zA-Z0-9_]{4,20}$", ErrorMessage = "Username must be 4-20 characters and ocntain only letters, numbers or underscore")]
         [Display(Name = "Username")]
         public string Username { get; set; }
 

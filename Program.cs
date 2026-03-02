@@ -16,7 +16,11 @@ namespace HTMLCSSLecture
 
             builder.Services.AddDbContext<RegistrationSystemContext> (options =>
             {
+                //Get Connection string from the dbcontext
                 options.UseSqlServer(builder.Configuration.GetConnectionString("RegistrationSystem"));
+                //to remove the string and put it directly in the program instead of getting connection string
+                //options.UseSqlServer("Server=EA611-13;Database=RegistrationSystem;Trusted_Connection=true;TrustServerCertificate=true");
+
             });
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
