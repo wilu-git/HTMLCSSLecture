@@ -15,8 +15,7 @@ namespace HTMLCSSLecture.Models
         [StringLength(25, ErrorMessage ="Cannot exceed 25 characters")]
         public string FirstName { get; set; }
 
-        [Required]
-        public string LastName { get; set; }
+        [Required]public string LastName { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
