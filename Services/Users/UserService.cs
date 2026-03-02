@@ -1,6 +1,7 @@
 ﻿using HTMLCSSLecture.Models;
 using HTMLCSSLecture.Repositories.Users;
 using HTMLCSSLecture.Models.Database;
+using HTMLCSSLecture.Helpers;
 
 namespace HTMLCSSLecture.Services.Users
 {
@@ -34,13 +35,13 @@ namespace HTMLCSSLecture.Services.Users
                 var user = new User
                 {
                     Username = model.Username,
-                    Password = model.Password,
+                    Password = SecurityHelper.HashPassword(model.Password),//Make hash password before inputting it to the database
                     DateCreated = DateTime.Now
                 };
 
                 var userDetails = new UserDetail
                 {
-                    Email = model.Email,
+                    Email = SecurityHelper.EncryptionEmail(model.Email),
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     DateCreated = DateTime.Now
