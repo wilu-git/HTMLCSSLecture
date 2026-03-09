@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<span class="me-2">
+    Hello, @User.Identity.Name
+</span>
+
+@using(Html.BeginForm("Logout", "Accounts", FormMethod.Post))
+{
+    <button type="submit" class="btn btn-sm btn-outline-danger">Logout</button>
+}

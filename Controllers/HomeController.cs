@@ -31,10 +31,11 @@ namespace HTMLCSSLecture.Controllers
             //        "Address3"
             //    }
             //};
-            var res = SecurityHelper.DecryptEmail("wr07cWep0aznxpLB6r93XErqpIdBbIoeWkamLinKUrIov+oojy/L1c2k1U1sekd2");
+            //var res = SecurityHelper.DecryptEmail("wr07cWep0aznxpLB6r93XErqpIdBbIoeWkamLinKUrIov+oojy/L1c2k1U1sekd2");
             //return View(data);
             //return View("Test");
-            return Ok(res);
+            //return Ok(res);
+            return View();
         }
 
         public IActionResult Privacy()
