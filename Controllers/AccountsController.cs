@@ -30,15 +30,15 @@ namespace HTMLCSSLecture.Controllers
             {
                 var res = await _userService.LoginUser(model);
 
-                if (res)
+                if ((bool)res.LoginSuccessful)
                 {
                     var claims = new List<Claim>
                     {
                         new Claim (ClaimTypes.Name, model.Username),
-                        new Claim(ClaimTypes.NameIdentifier, model.Username)
+                        new Claim(ClaimTypes.NameIdentifier, res.UserId.ToString())
                     };
                     //USERNAME AND PASSWORD MATCH --- REDIRECT
-                    var identity = new ClaimsIdentity(claims, 
+                    var identity = new ClaimsIdentity(claims,
                         CookieAuthenticationDefaults.AuthenticationScheme);
 
                     var claimsPrincipal = new ClaimsPrincipal(identity);
@@ -61,6 +61,16 @@ namespace HTMLCSSLecture.Controllers
             }
 
             return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Accounts");
+        }
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

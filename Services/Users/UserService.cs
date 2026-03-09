@@ -13,17 +13,32 @@ namespace HTMLCSSLecture.Services.Users
             _repo = repo;
         }
 
-        public async Task<bool> LoginUser(LoginModel model)
+        public async Task<UserDetail> GetUserDetails(int id)
+        {
+            var data = await _repo.GetUserDetailsById(id);
+
+            if (data == null)
+            {
+                throw new Exception("User data not found");
+            }
+            return data;
+        }
+
+        public async Task<LoginResponseModel> LoginUser(LoginModel model)
         {
             var userData = await _repo.GetUser(model.Username);
             if (userData == null)
             {
-                return false;
+                //throw new Exception("Username is null");
+                return new LoginResponseModel { LoginSuccessful = false };
             }
 
             var isPwMatch = SecurityHelper.VerifyPassword(model.Password, userData.Password);
 
-            return isPwMatch;
+            return new LoginResponseModel{
+                UserId = userData.UserId,
+                LoginSuccessful = isPwMatch 
+            };
 
             //return SecurityHelper.VerifyPassword(model.Password, userData.Password);
         }   

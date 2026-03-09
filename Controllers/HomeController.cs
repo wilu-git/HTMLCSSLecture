@@ -1,7 +1,10 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using HTMLCSSLecture.Helpers;
 using HTMLCSSLecture.Models;
+using HTMLCSSLecture.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,13 +14,14 @@ namespace HTMLCSSLecture.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUserService _userService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUserService userService)
         {
-            _logger = logger;
+            _userService = userService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             //var data = new UserDetailsModel
             //{
@@ -35,7 +39,9 @@ namespace HTMLCSSLecture.Controllers
             //return View(data);
             //return View("Test");
             //return Ok(res);
-            return View();
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var data = await _userService.GetUserDetails(userId);
+            return View(data);
         }
 
         public IActionResult Privacy()
