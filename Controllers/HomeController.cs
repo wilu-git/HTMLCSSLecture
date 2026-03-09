@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using HTMLCSSLecture.Helpers;
 using HTMLCSSLecture.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,23 +15,25 @@ namespace HTMLCSSLecture.Controllers
             _logger = logger;
         }
 
-        //public IActionResult Index ()
-        //{
-        //    //var data = new UserDetailsModel
-        //    //{
-        //    //    Userid = 1,
-        //    //    NameOfUser = "John Doe",
-        //    //    Email = "sample@email.com",
-        //    //    Addresses = new List<string>
-        //    //    {
-        //    //        "123 Main St, Anytown, USA",
-        //    //        "456 Elm St, Othertown, USA",
-        //    //        "Address3"
-        //    //    }
-        //    //};
-        //    //return View(data);
-        //    return View("Test");
-        //}
+        public IActionResult Index()
+        {
+            //var data = new UserDetailsModel
+            //{
+            //    Userid = 1,
+            //    NameOfUser = "John Doe",
+            //    Email = "sample@email.com",
+            //    Addresses = new List<string>
+            //    {
+            //        "123 Main St, Anytown, USA",
+            //        "456 Elm St, Othertown, USA",
+            //        "Address3"
+            //    }
+            //};
+            var res = SecurityHelper.DecryptEmail("wr07cWep0aznxpLB6r93XErqpIdBbIoeWkamLinKUrIov+oojy/L1c2k1U1sekd2");
+            //return View(data);
+            //return View("Test");
+            return Ok(res);
+        }
 
         public IActionResult Privacy()
         {

@@ -34,6 +34,13 @@
             <div class="alert alert-danger" role="alert">
                 @ViewBag.ErrorMessage
             </div>
+            <script>
+                Swal.fire({
+                         title: "Failed",
+                         text: '@ViewBag.errorMessage',
+                         icon: "error"
+                     })
+            </script>
         }
 
     }
