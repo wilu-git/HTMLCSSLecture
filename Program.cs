@@ -1,6 +1,7 @@
 using HTMLCSSLecture.Models.Database;
 using HTMLCSSLecture.Repositories.Users;
 using HTMLCSSLecture.Services.Users;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace HTMLCSSLecture
@@ -25,6 +26,12 @@ namespace HTMLCSSLecture
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
 
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Login/Index";
+
+                });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -38,6 +45,7 @@ namespace HTMLCSSLecture
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();

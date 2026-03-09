@@ -21,10 +21,11 @@ namespace HTMLCSSLecture.Services.Users
                 return false;
             }
 
-            //TODO: CREATE PASSWORD HASHER 
+            var isPwMatch = SecurityHelper.VerifyPassword(model.Password, userData.Password);
 
-            return (userData.Password == model.Password);
+            return isPwMatch;
 
+            //return SecurityHelper.VerifyPassword(model.Password, userData.Password);
         }   
 
         public async Task RegisterUser(RegistrationModel model)
