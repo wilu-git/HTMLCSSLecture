@@ -28,9 +28,16 @@ namespace HTMLCSSLecture
 
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
-                {
-                    options.LoginPath = "/Login/Index";
+                {         
+                    options.LoginPath = "/Accounts/Login";
+                    options.AccessDeniedPath = "/Accounts/AccessDenied";
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                    options.SlidingExpiration = true;
 
+                    /* Given path 
+                    https://localhost:7112/Accounts/Login?ReturnUrl=%2FHome%2FLogin */
+
+                    //TODO: Secured Controllers 
                 });
             var app = builder.Build();
 
