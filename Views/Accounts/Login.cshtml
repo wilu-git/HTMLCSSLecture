@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body class="container">
-    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    @using (Html.BeginForm("Login", "Accounts", FormMethod.Post))
     {
         <div>
             @Html.LabelFor(x => x.Username, new { @class = "form-label" })

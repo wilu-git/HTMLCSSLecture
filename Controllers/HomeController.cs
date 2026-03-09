@@ -2,10 +2,12 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using HTMLCSSLecture.Helpers;
 using HTMLCSSLecture.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HTMLCSSLecture.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
